@@ -45,8 +45,8 @@ export const TaskEvents = () => {
 	document.addEventListener('click', e => {
 		if (e.target.classList.contains('task-edit-button')) {
 			e.preventDefault();
-			let formData = document.forms['task-edit'];
-			let task = CurrentlySelected.getProject().tasks[e.target.parentElement.dataset.taskId];
+			let formData = document.querySelector(`form[data-task-id="${e.target.parentElement.dataset.taskId}"`);
+			let task = CurrentlySelected.getProject().tasks[formData.dataset.taskId];
 			task.title = formData[0].value;
 			task.description = formData[1].value;
 			task.priority = formData[2].value;
